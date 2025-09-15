@@ -2,16 +2,89 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Primer Sitio Web con Python</title>
+    <title>Registro de Fitness</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Azul muy claro */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #007bff; /* Azul vibrante */
+        }
+        form {
+            background-color: #e6f7ff; /* Azul más claro */
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f0f8ff;
+            border: 1px solid #b3d9ff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Bienvenido a mi sitio web!</h1>
-    <p>Esta página fue servida usando el framework Flask de Python.</p>
-    <p>A continuación, te muestro una lista de cosas que me gustan:</p>
-    <ul>
-        <li>Automatización de tareas</li>
-        <li>Análisis de datos</li>
-        <li>Inteligencia Artificial</li>
-    </ul>
+    <div class="container">
+        <h1>Registro de Sesiones de Fitness</h1>
+        <form method="POST">
+            <h2>Añadir Sesión</h2>
+            <label for="fecha">Fecha:</label><br>
+            <input type="date" id="fecha" name="fecha" required><br>
+            
+            <label for="duracion">Duración (minutos):</label><br>
+            <input type="number" id="duracion" name="duracion" required><br>
+            
+            <label for="musculos">Músculos Trabajados:</label><br>
+            <input type="text" id="musculos" name="musculos" required><br>
+            
+            <button type="submit">Guardar Sesión</button>
+        </form>
+
+        <h2>Historial de Sesiones</h2>
+        <ul>
+            {% for sesion in sesiones %}
+            <li>
+                <strong>Fecha:</strong> {{ sesion.fecha }}<br>
+                <strong>Duración:</strong> {{ sesion.duracion }} minutos<br>
+                <strong>Músculos:</strong> {{ sesion.musculos }}
+            </li>
+            {% else %}
+            <li>Aún no hay sesiones registradas.</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

@@ -1,0 +1,1 @@
+{"fecha": "2025-09-15", "duracion": "40", "musculos": "Pecho, hombro, espalda y abs"}
